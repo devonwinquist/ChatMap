@@ -5,13 +5,24 @@
         <span>ChatMap</span>
         <span class="example-spacer"></span>
 
-        <!-- <button mat-icon-button class="header-button" aria-label="Example icon button with a home icon">
-          <mat-icon>home</mat-icon>
-        </button> -->
 
-        <button mat-icon-button class="header-button" aria-label="Example icon button with a menu icon">
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="header-button" aria-label="Example icon button with a menu icon">
           <mat-icon>menu</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>login</mat-icon>
+            <span>Login</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>person_box</mat-icon>
+            <span>Create Account</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+          </button>
+        </mat-menu>
       </mat-toolbar-row>
 
     </mat-toolbar>
