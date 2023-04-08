@@ -1,0 +1,38 @@
+<div class="home-page">
+  <div class="header">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>ChatMap</span>
+        <span class="example-spacer"></span>
+
+        <!-- <button mat-icon-button class="header-button" aria-label="Example icon button with a home icon">
+          <mat-icon>home</mat-icon>
+        </button> -->
+
+        <button mat-icon-button class="header-button" aria-label="Example icon button with a menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+  </div>
+  
+  <div class="map">
+    <agm-map [latitude]="latitude" [longitude]="longitude">
+      <div class="testButton">
+        <button type="button">Click Me!</button>
+      </div>
+    </agm-map>
+  </div>
+
+  <div class="controls-toolbar">
+    <mat-toolbar color="secondary">
+      <mat-toolbar-row>
+
+
+
+
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+.home-page {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    
+}
+agm-map {
+    height: 750px;
+}
+.testButton {
+    background-color: greenyellow;
+}
+.example-icon {
+    padding: 0 14px;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+.header .mat-toolbar.mat-primary {
+    background: #21586d;
+    color: #fff;
+    min-height:100px;
+    
+}
+.header-button {
+    background-color: #21586d;
+    color: #fff;
+    height: 50px;
+    width: 60px;
+    margin-top: 30px;
+}
+.controls-toolbar .mat-toolbar.mat-secondary {
+    background: #21586d;
+    color: #fff;
+    min-height:60px;
+}
+
+
+
