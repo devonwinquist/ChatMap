@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'log-in-page',
-    templateUrl: './login.template.html',
+    templateUrl: './login.component.html',
     styleUrls: ['../app/app.component.css']
 })
 
-export class Login implements OnInit {
+export class LoginComponent implements OnInit {
     public username: string = "";
     public password: string = "";
     public show: boolean = false;

@@ -1,4 +1,4 @@
-import { Login } from './../login/login.component';
+import { LoginComponent } from './../login/login.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,12 +12,13 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+import { LoginModule } from '../login/login.module';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    Login
   ],
   imports: [
     BrowserModule,
@@ -33,6 +34,7 @@ import {FormsModule} from '@angular/forms';
     AgmCoreModule.forRoot({
       apiKey:'AIzaSyD6Tz9YhGY_Ovutu1Q7fYnISfwHHksiUU0'
     }),
+    LoginModule,
 
 
   ],
