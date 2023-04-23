@@ -7,7 +7,7 @@
 
 
         <button mat-icon-button [matMenuTriggerFor]="menu" class="header-button" aria-label="Example icon button with a menu icon">
-          <mat-icon>menu</mat-icon>
+          <mat-icon>person_box</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
@@ -15,7 +15,7 @@
             <span>Login</span>
           </button>
           <button mat-menu-item>
-            <mat-icon>person_box</mat-icon>
+            <mat-icon>person_add</mat-icon>
             <span>Create Account</span>
           </button>
           <button mat-menu-item>
@@ -27,6 +27,8 @@
 
     </mat-toolbar>
   </div>
+
+  <log-in-page></log-in-page>
   
   <div class="map">
     <agm-map [latitude]="latitude" [longitude]="longitude">
