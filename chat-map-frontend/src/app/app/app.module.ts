@@ -1,4 +1,3 @@
-import { LoginComponent } from './../login/login.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import { LoginModule } from '../login/login.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -35,6 +35,7 @@ import { LoginModule } from '../login/login.module';
       apiKey:'AIzaSyD6Tz9YhGY_Ovutu1Q7fYnISfwHHksiUU0'
     }),
     LoginModule,
+    HttpClientModule,
 
 
   ],

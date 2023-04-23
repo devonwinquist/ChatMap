@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // private httpClient: HttpClient;
+  
   title = 'ChatMap';
 
   latitude = 51.678418;
