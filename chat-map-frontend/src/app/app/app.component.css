@@ -6,7 +6,7 @@
 }
 agm-map {
     height: 550px;
-    height: 750px;
+    /* height: 750px; */
 }
 .testButton {
     background-color: greenyellow;

@@ -1,6 +1,6 @@
 <!-- <div class="login" [hidden]="isAuthenticated"> -->
-<div class="login"*ngFor="let user of users$ | async" >
-    <form class="example-form" [hidden]="authenticateUser(user.username, user.password)">
+<div class="login" [hidden]="isAuthenticated">
+    <form class="example-form">
       <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>User Name</mat-label>
       <input matInput placeholder="Enter your name" name="usename" [(ngModel)] ="username">
@@ -12,6 +12,10 @@
       <button class="submitLogin" mat-raised-button color="primary" (click)="submit()">Submit</button>
       <span *ngIf="show"> <button mat-button color="accent">Incorrect username/password</button></span>
     </form>
+
+    <div class="temp"*ngFor="let user of users$ | async">
+        <div [hidden]="authenticateUser(user.username, user.password)"></div>
+    </div>
 
     <div class="row">
         <div class="users" *ngFor="let user of users$ | async">

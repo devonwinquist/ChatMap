@@ -38,6 +38,57 @@
     </agm-map>
   </div>
 
+  <!-- <div class="container">
+    <div class="map-container">
+      <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="onMapClick($event)">
+        <agm-marker *ngFor="let message of messages" [latitude]="message.lat" [longitude]="message.lng" (markerClick)="onMarkerClick(message)" [label]="message.user" [title]="message.text"></agm-marker>
+      </agm-map>
+    </div>
+
+ 
+
+    <div class="form-container">
+
+      <mat-form-field class="form-field">
+
+        <input matInput placeholder="Your message" [(ngModel)]="text">
+
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="form-button" (click)="sendMessage()">Send</button>
+
+      <button mat-raised-button class="form-button" (click)="clearMessages()">Clear messages</button>
+
+    </div>
+
+  </div> -->
+
+ 
+
+  <!-- <div *ngIf="selectedMessage" class="overlay">
+
+    <div class="overlay-container">
+
+      <div class="overlay-header">{{ selectedMessage.user }}</div>
+
+      <div class="overlay-body">{{ selectedMessage.text }}</div>
+
+      <div class="overlay-footer">
+
+        <div class="overlay-date">{{ selectedMessage.timestamp | date:'medium' }}</div>
+
+        <button mat-icon-button class="delete-button" (click)="deleteMessage(selectedMessage)">
+
+          <mat-icon>delete</mat-icon>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div> -->
+
   <div class="controls-toolbar">
     <mat-toolbar color="secondary">
       <mat-toolbar-row>
@@ -45,4 +96,5 @@
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
-</div>
+
+  </div>

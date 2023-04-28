@@ -13,6 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import { LoginModule } from '../login/login.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -36,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     }),
     LoginModule,
     HttpClientModule,
+    MatSnackBarModule,
 
 
   ],
