@@ -1,3 +1,4 @@
+import { PostDialogComponent } from './post-dialog/post-dialog.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,7 +11,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginModule } from '../login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -20,17 +22,20 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
+    PostDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
     MatButtonToggleModule,
     MatButtonModule,
+    MatDialogModule,
     MatInputModule,
     AgmCoreModule.forRoot({
       apiKey:'AIzaSyD6Tz9YhGY_Ovutu1Q7fYnISfwHHksiUU0'
@@ -46,6 +51,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   ],
   bootstrap: [
     AppComponent
+  ],
+  entryComponents: [
+    PostDialogComponent
   ]
 })
 export class AppModule { }
