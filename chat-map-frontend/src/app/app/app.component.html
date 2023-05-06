@@ -31,10 +31,11 @@
   <log-in-page></log-in-page>
   
   <div class="map">
-    <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClick($event)">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [disableDefaultUI] = "true" (mapClick)="onMapClick($event)">
       <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng">
         <agm-info-window>
           <p>{{marker.createdBy}}</p>
+          <p>{{marker.title}}</p>
           <p>{{marker.message}}</p>
         </agm-info-window>
       </agm-marker>
