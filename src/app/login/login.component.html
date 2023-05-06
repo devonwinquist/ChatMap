@@ -1,0 +1,37 @@
+<!-- <div class="login" [hidden]="isAuthenticated"> -->
+<div class="login" [hidden]="isAuthenticated">
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>User Name</mat-label>
+      <input matInput placeholder="Enter your name" name="usename" [(ngModel)] ="username">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Enter your password" value="" name="password" type="password" [(ngModel)]= "password">
+      </mat-form-field>
+      <button class="submitLogin" mat-raised-button color="primary" (click)="submit()">Submit</button>
+      <span *ngIf="show"> <button mat-button color="accent">Incorrect username/password</button></span>
+    </form>
+
+    <div class="temp"*ngFor="let user of users$ | async">
+        <div [hidden]="authenticateUser(user.username, user.password)"></div>
+    </div>
+
+    <div class="row">
+        <div class="users" *ngFor="let user of users$ | async">
+            <div class="card-body">
+                <h3>{{user.username}}</h3>
+                <h3>{{user.password}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="row">
+    <div class="users" *ngFor="let user of users$ | async">
+        <div class="card-body">
+            <h3>{{user.username}}</h3>
+            <h3>{{user.password}}</h3>
+        </div>
+    </div>
+</div> -->
