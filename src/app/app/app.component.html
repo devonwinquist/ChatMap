@@ -1,0 +1,49 @@
+<div class="home-page">
+  <div class="header">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>ChatMap</span>
+        <span class="example-spacer"></span>
+
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="header-button" aria-label="Example icon button with a menu icon">
+          <mat-icon>person_box</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>login</mat-icon>
+            <span>Login</span>
+          </button>
+          <button mat-menu-item routerLink="/createuser">
+            <mat-icon>person_add</mat-icon>
+            <span>Create Account</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+          </button>
+        </mat-menu>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+  </div>
+
+  <log-in-page></log-in-page>
+  
+  <div class="map">
+    <agm-map [latitude]="latitude" [longitude]="longitude">
+      <div class="testButton">
+        <button type="button">Click Me!</button>
+      </div>
+    </agm-map>
+  </div>
+
+  <div class="controls-toolbar">
+    <mat-toolbar color="secondary">
+      <mat-toolbar-row>
+
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+  </div>
