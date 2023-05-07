@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { LoginService } from './../login/login.service';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
@@ -14,6 +15,20 @@ export class AppComponent {
   public longitude = 7.809007;
   public isAuthenticated = false;
   public username = "";
-  constructor(private _snackBar: MatSnackBar) {}
+  public isShowingLogin: boolean;
+  public isShowingLogout: boolean;
+  
+
+  // if logged in when click create account, prompt log out
+
+  // if logged in hide login button and show logout button instead
+
+
+
+  constructor(private _snackBar: MatSnackBar, public loginService: LoginService) {
+
+  }
+
+  
 
 }
