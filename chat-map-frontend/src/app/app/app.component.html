@@ -18,7 +18,7 @@
             <mat-icon>logout</mat-icon>
             <span>Logout</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item *ngIf="loginService.isAuthenticated==false" (click)="loginService.showRegister()">
             <mat-icon>person_add</mat-icon>
             <span>Create Account</span>
           </button>
@@ -34,6 +34,7 @@
 
   <!-- <log-in-page *ngIf="loginService.isShowingLogin==true"></log-in-page> -->
   <log-in-page [hidden]="loginService.isShowingLogin==false"></log-in-page>
+  <app-register [hidden]="loginService.isShowingRegister==false"></app-register>
 
   <div class="map" >
     <agm-map [latitude]="latitude" [longitude]="longitude">

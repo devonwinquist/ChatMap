@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
+      console.log("test");
       if(this.loginForm.invalid) {
         return;
       }
@@ -52,39 +53,6 @@ export class LoginComponent implements OnInit {
       ).subscribe(() => {
         this.loginService.hideLogin();
       })
-
-      // if(this.loginService.isAuthenticated==true) {
-      //   this.loginService.isShowingLogin = false;
-      // }
-
-      
-      this.clear();
-    }
-
-    // login(username: string, password: string) {
-    //   this.loginService.login(username, password).subscribe(data=>console.log("success"));
-    // }
-
-    public submit() {
-        console.log("username is " + this.username);
-        // for(let user of this.users$) {
-        //   console.log(user.username);
-        //   console.log(user.password);
-        // }
-
-        
-        // this.login(this.username, this.password);
-        if(this.loginService.isAuthenticated==true) {
-          this.loginService.isShowingLogin = false;
-        }
-        this.clear();
-        //this.isAuthenticated=true;
-    }
-
-    public clear() {
-        this.username = "";
-        this.password = "";
-        this.show = true;
     }
     
 }

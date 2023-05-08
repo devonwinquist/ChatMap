@@ -15,6 +15,7 @@ import { LoginModule } from '../login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RegisterModule } from '../register/register.module';
 
 
 
@@ -41,6 +42,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSnackBarModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    RegisterModule,
 
 
 
