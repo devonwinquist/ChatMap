@@ -5,7 +5,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
 
 
-interface Marker {
+export interface Marker {
 
   lat: number;
 
@@ -89,6 +89,7 @@ export class AppComponent {
   
 
   onMapClick($event: google.maps.MouseEvent) {
+    console.log(this.postService.getPosts());
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       id: 2,
@@ -96,7 +97,7 @@ export class AppComponent {
     };
     const dialogRef = this._dialog.open(PostDialogComponent,dialogConfig);
     dialogRef.afterClosed().subscribe(
-      data => this.setFields(data.title, data.message, data.latitude, data.longitude),     
+      data => this.addMarker(data.latitude, data.longitude, data.title, data.message,),     
     );
 
   }
@@ -108,6 +109,7 @@ export class AppComponent {
     this.tempTitle = title;
 
   }
+
 
 
 }
