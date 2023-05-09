@@ -31,10 +31,6 @@ export class AppComponent {
 
   public latitude = 51.678418;
   public longitude = 7.809007;
-  public tempTitle:any;
-  public tempContent:any;
-  public tempLat:any;
-  public tempLong:any;
 
   public isAuthenticated = false;
 
@@ -54,7 +50,7 @@ export class AppComponent {
   ];
 
   addMarker(lat: number, lng: number, title: string, message: string) {
-    if (this.isAuthenticated) {
+    //if (this.isAuthenticated) {
       const newMarker: Marker = {
         lat,
         lng,
@@ -66,11 +62,11 @@ export class AppComponent {
       this._snackBar.open('Message added successfully!', 'Dismiss', {
         duration: 5000
       });
-    } else {
-      this._snackBar.open('You must be logged in to add a message.', 'Dismiss', {
-        duration: 5000
-      });
-    }
+    //} else {
+    //  this._snackBar.open('You must be logged in to add a message.', 'Dismiss', {
+    //    duration: 5000
+    //  });
+    //}
   }
 
   deleteMarker(index: number) {
@@ -99,15 +95,7 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(
       data => this.addMarker(data.latitude, data.longitude, data.title, data.message,),     
     );
-
-  }
-
-  setFields(title:string,content:string,lat:number,long:number) {
-    this.tempContent = content;
-    this.tempLat = lat;
-    this.tempLong = long;
-    this.tempTitle = title;
-
+      console.log(this.markers);
   }
 
 

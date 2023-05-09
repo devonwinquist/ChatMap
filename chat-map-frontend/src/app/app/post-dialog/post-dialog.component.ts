@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import { PostService } from '../post.service';
+import { PostService, Post } from '../post.service';
 
 @Component({
   selector: 'app-post-dialog',
@@ -34,7 +34,14 @@ export class PostDialogComponent implements OnInit{
 
   post() {
     this.dialogRef.close(this.form.value);
-    this.postService.createPost(this.title,this.message,this.latitude,this.longitude,3);
+    const postPost = {
+      title: this.title,
+      message: this.message,
+      lat: this.latitude,
+      lng: this.longitude,
+      userId: 3
+    }
+    this.postService.createPost(postPost);
   }
 
   close() {

@@ -26,8 +26,8 @@ export class PostService {
   };
 
 
-  createPost(ptitle:string, pmessage:string, plat:number, plng:number, puserId:number){
-    return this.httpClient.post<Post>('http://localhost:3000/post',{ptitle, pmessage, plat, plng, puserId},this.httpOptions).pipe(
+  createPost(post: {title:string, message:string, lat:number, lng:number, userId:number}){
+    return this.httpClient.post<Post>('http://localhost:3000/post',post,this.httpOptions).pipe(
       tap((newPost:Post) => console.log('Added post w/ id=${newPost.title}')),
       catchError(this.handleError<Post>('addPost'))
     );
