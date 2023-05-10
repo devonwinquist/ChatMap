@@ -18,11 +18,11 @@ export interface Marker {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   
   title = 'ChatMap';
-  public latitude = 51.678418;
-  public longitude = 7.809007;
+  public latitude = 44.8113;
+  public longitude = -91.4985;
   public isAuthenticated = false;
   public username = "";
   public isShowingLogin: boolean;
@@ -44,6 +44,10 @@ export class AppComponent {
 
   }
 
+  ngOnInit(): void {
+      this.showAllPosts();
+  }
+
   addMarker(title: string, content: string, lat: number, lng: number) {
     if(this.loginService.isAuthenticated) {
       const newMarker: Marker = {
@@ -62,6 +66,7 @@ export class AppComponent {
         duration: 5000
       });
     }
+    this.showAllPosts();
   }
 
   deleteMarker(index: number) {
@@ -87,6 +92,17 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(
       data=>this.addMarker(data.title, data.content, data.latitude, data.longitude)
     );
+  }
+
+  markerArray: any[];
+
+  showAllPosts() {
+    this.markerService.getAllPosts().subscribe({
+      next: markers => {
+        console.log(markers);
+        this.markerArray = markers;
+      }
+    })
   }
   
 

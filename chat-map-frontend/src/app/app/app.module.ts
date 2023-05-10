@@ -48,8 +48,6 @@ import { MarkerComponent } from '../marker/component/marker.component';
     RegisterModule,
     MatDialogModule,
 
-
-
   ],
   providers: [
     
