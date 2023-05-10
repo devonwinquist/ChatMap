@@ -10,16 +10,21 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginModule } from '../login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { RegisterModule } from '../register/register.module';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MarkerComponent } from '../marker/component/marker.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    MarkerComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +43,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LoginModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    RegisterModule,
+    MatDialogModule,
+
 
 
   ],
@@ -46,6 +56,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   ],
   bootstrap: [
     AppComponent
+  ],
+  entryComponents: [
+    MarkerComponent
   ]
 })
 export class AppModule { }

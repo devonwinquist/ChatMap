@@ -1,0 +1,35 @@
+<div class="register">
+
+    <form [formGroup]="registerForm" (ngSubmit)="submitUser()">
+        <div class="container">
+
+            <mat-form-field>
+                <input matInput placeholder="Full Name" formControlName="name">
+                <mat-hint *ngIf="registerForm.get('name')?.errors">Full Name is required</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Your Username" formControlName="username">
+                <mat-hint *ngIf="registerForm.get('username')?.errors">Username is required</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Your Email" formControlName="email">
+                <mat-hint *ngIf="registerForm.get('email')?.errors">Email is required</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="password" placeholder="Password" formControlName="password">
+                <mat-hint *ngIf="registerForm.get('password')?.errors">Password is required</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="password" placeholder="Confirm your password" formControlName="passwordConfirm">
+                <mat-hint *ngIf="registerForm.get('passwordConfirm')?.errors">Password Confirmation is Required</mat-hint>
+            </mat-form-field>
+
+            <button mat-flat-button color="primary" [disabled]="registerForm.invalid" type="submit">Register</button>
+
+        </div>
+    </form>
+</div>
