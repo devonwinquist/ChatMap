@@ -16,12 +16,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RegisterModule } from '../register/register.module';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MarkerComponent } from '../marker/component/marker.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    MarkerComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { RegisterModule } from '../register/register.module';
     MatFormFieldModule,
     ReactiveFormsModule,
     RegisterModule,
+    MatDialogModule,
 
 
 
@@ -52,6 +56,9 @@ import { RegisterModule } from '../register/register.module';
   ],
   bootstrap: [
     AppComponent
+  ],
+  entryComponents: [
+    MarkerComponent
   ]
 })
 export class AppModule { }

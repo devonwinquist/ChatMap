@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { LoginService } from './login.service';
+import { LoginService } from '../../services/login.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 

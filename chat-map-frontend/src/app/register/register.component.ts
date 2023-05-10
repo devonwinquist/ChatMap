@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from '../login/login.service';
+import { LoginService } from '../../services/login.service';
 import { map } from 'rxjs';
 
 @Component({

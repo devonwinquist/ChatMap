@@ -36,13 +36,26 @@
   <log-in-page [hidden]="loginService.isShowingLogin==false"></log-in-page>
   <app-register [hidden]="loginService.isShowingRegister==false"></app-register>
 
-  <div class="map" >
+
+  <div class="map">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [disableDefaultUI] = "true" (mapClick)="onMapClick($event)">
+      <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng">
+        <agm-info-window>
+          <p>{{marker.createdBy}}</p>
+          <p>{{marker.title}}</p>
+          <p>{{marker.message}}</p>
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+
+  <!-- <div class="map" >
     <agm-map [latitude]="latitude" [longitude]="longitude">
       <div class="testButton">
         <button type="button">Click Me!</button>
       </div>
     </agm-map>
-  </div>
+  </div> -->
 
   <div class="controls-toolbar">
     <mat-toolbar color="secondary">

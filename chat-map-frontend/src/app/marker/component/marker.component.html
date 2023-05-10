@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Post Creation</h2>
+
+<mat-dialog-content [formGroup]="form">
+  
+    <div>
+        <mat-form-field>
+            <input matInput
+                    placeholder="Enter Title"
+                    formControlName="title"
+                    [(ngModel)]="title">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput
+                    placeholder="Enter Message"
+                   formControlName="message"
+                   [(ngModel)]="message">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput
+                    placeholder="Enter Latitude"
+                    formControlName="latitude"
+                    [(ngModel)]="latitude">
+        </mat-form-field>
+    </div>
+    <div> 
+        <mat-form-field>
+            <input matInput
+                    placeholder="Enter Longitude"
+                    formControlName="longitude"
+                    [(ngModel)]="longitude">
+        </mat-form-field>
+    </div>
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary"(click)="post()">Post</button>
+</mat-dialog-actions>
