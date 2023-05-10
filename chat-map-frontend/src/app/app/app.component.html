@@ -2,15 +2,17 @@
   <div class="header">
     <mat-toolbar color="primary">
       <mat-toolbar-row>
-        <span>ChatMap</span>
+        <h1>ChatMap</h1>
+        <span class="example-spacer"></span>
+        <h1 *ngIf="loginService.isAuthenticated">Welcome back</h1>
+        <h1 *ngIf="loginService.isAuthenticated">{{name}}</h1>
         <span class="example-spacer"></span>
 
-
-        <button mat-icon-button [matMenuTriggerFor]="menu" class="header-button" aria-label="Example icon button with a menu icon">
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="header-button" aria-label="my icon">
           <mat-icon>person_box</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item *ngIf="loginService.isAuthenticated==false" (click)="loginService.showLogin()">
+          <button mat-menu-item *ngIf="loginService.isAuthenticated==false" (click)="loginService.showLogin()&&loginService.isShowingRegister=false">
             <mat-icon>login</mat-icon>
             <span>Login</span>
           </button>
@@ -18,7 +20,7 @@
             <mat-icon>logout</mat-icon>
             <span>Logout</span>
           </button>
-          <button mat-menu-item *ngIf="loginService.isAuthenticated==false" (click)="loginService.showRegister()">
+          <button mat-menu-item *ngIf="loginService.isAuthenticated==false" (click)="loginService.showRegister()&&loginService.isShowingLogin=false">
             <mat-icon>person_add</mat-icon>
             <span>Create Account</span>
           </button>
@@ -38,7 +40,9 @@
 
 
   <div class="map">
+
     <agm-map [latitude]="latitude" [longitude]="longitude" [disableDefaultUI] = "true" (mapClick)="onMapClick($event)">
+      
       <agm-marker *ngFor="let marker of markerArray" [latitude]="marker.latitude" [longitude]="marker.longitude">
         <agm-info-window>
           <p>{{marker.createdBy}}</p>
@@ -49,18 +53,15 @@
     </agm-map>
   </div>
 
-  <!-- <div class="map" >
-    <agm-map [latitude]="latitude" [longitude]="longitude">
-      <div class="testButton">
-        <button type="button">Click Me!</button>
-      </div>
-    </agm-map>
-  </div> -->
-
   <div class="controls-toolbar">
     <mat-toolbar color="secondary">
       <mat-toolbar-row>
-
+        <span class="example-spacer"></span>
+        <button mat-button (click)="onMapClick($event)">
+          <mat-icon>post_add</mat-icon>
+          <span>Create a new post</span>
+        </button>
+        <span class="example-spacer"></span>
       </mat-toolbar-row>
     </mat-toolbar>
   </div>

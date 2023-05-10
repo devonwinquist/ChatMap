@@ -1,6 +1,6 @@
 import { MarkerService } from './../../services/marker.service';
 import { LoginService } from '../../services/login.service';
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { MarkerComponent } from '../marker/component/marker.component';
@@ -27,16 +27,6 @@ export class AppComponent implements OnInit {
   public username = "";
   public isShowingLogin: boolean;
   public isShowingLogout: boolean;
-
-  // markers: Marker[] =[
-  //   {
-  //     lat: 51.678418,
-  //     lng: 7.809007,
-  //     title: 'Test title',
-  //     message: 'this is a test message',
-  //     createdBy: 'test user'
-  //   }
-  // ]
   markers: Marker[];
   
 
@@ -45,7 +35,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.showAllPosts();
+    this.showAllPosts();
+  }
+
+  ngOnChanges(): void {
+    this.showAllPosts();
   }
 
   addMarker(title: string, content: string, lat: number, lng: number) {
@@ -57,16 +51,17 @@ export class AppComponent implements OnInit {
         lng,
         createdBy: this.username
       };
-      this.markers.push(newMarker);
       this._snackBar.open('Message added successfully!', 'Dismiss', {
         duration: 5000
       });
+      this.markers.push(newMarker);
+      this.showAllPosts();
     } else {
       this._snackBar.open('You must be logged in to add a message.', 'Dismiss', {
         duration: 5000
       });
     }
-    this.showAllPosts();
+    
   }
 
   deleteMarker(index: number) {
