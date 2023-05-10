@@ -35,20 +35,24 @@ export class LoginService {
     this.isShowingRegister = false;
   }
 
-  public showRegister() {
+  public showRegister(): void {
     this.isShowingRegister = true;
   }
   
-  public hideRegister() {
+  public hideRegister(): void {
     this.isShowingRegister = false;
   }
 
-  public showLogin() {
+  public showLogin(): void {
     this.isShowingLogin = true;
   }
 
-  public hideLogin() {
+  public hideLogin(): void {
     this.isShowingLogin = false;
+  }
+
+  public getUsername(): string {
+    return this.username;
   }
 
   // login(email: string, password: string) {
