@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 
 export interface Post {
@@ -24,5 +24,11 @@ export class MarkerService {
       tap(post => console.log(post)),
       map(post => post)
     )
+  }
+
+  getAllPosts(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>("http://localhost:3000/post/").pipe(
+      tap(data => console.log('All: ' + JSON.stringify(data)))
+    );
   }
 }

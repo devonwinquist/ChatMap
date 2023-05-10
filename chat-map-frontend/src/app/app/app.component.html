@@ -22,10 +22,10 @@
             <mat-icon>person_add</mat-icon>
             <span>Create Account</span>
           </button>
-          <button mat-menu-item>
+          <!-- <button mat-menu-item>
             <mat-icon>settings</mat-icon>
             <span>Settings</span>
-          </button>
+          </button> -->
         </mat-menu>
       </mat-toolbar-row>
 
@@ -39,11 +39,11 @@
 
   <div class="map">
     <agm-map [latitude]="latitude" [longitude]="longitude" [disableDefaultUI] = "true" (mapClick)="onMapClick($event)">
-      <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng">
+      <agm-marker *ngFor="let marker of markerArray" [latitude]="marker.latitude" [longitude]="marker.longitude">
         <agm-info-window>
           <p>{{marker.createdBy}}</p>
           <p>{{marker.title}}</p>
-          <p>{{marker.message}}</p>
+          <p>{{marker.content}}</p>
         </agm-info-window>
       </agm-marker>
     </agm-map>
@@ -65,4 +65,4 @@
     </mat-toolbar>
   </div>
 
-  </div>
+</div>
