@@ -12,14 +12,14 @@ import { map } from 'rxjs';
 export class MarkerComponent implements OnInit{
   form: FormGroup;
   title: string;
-  message: string;
+  content: string;
   latitude: number;
   longitude: number;
   createdBy: string;
 
   constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<MarkerComponent>, @Inject(MAT_DIALOG_DATA) data: any, public markerService: MarkerService) {
     this.title = data.title;
-    this.message = data.message;
+    this.content = data.message;
     this.latitude = data.latitude;
     this.longitude = data.longitude;
   }
@@ -27,7 +27,7 @@ export class MarkerComponent implements OnInit{
   ngOnInit(): void {
     this.form=this.fb.group({
       title: [this.title,[]],
-      content: ["my content",[]],
+      content: [this.content,[]],
       latitude: [this.latitude,[]],
       longitude: [this.longitude,[]],
       userEntityId: 3
@@ -36,18 +36,12 @@ export class MarkerComponent implements OnInit{
 
   post() {
     this.dialogRef.close(this.form.value);
-    const myPost = {
-      title: this.title,
-      content: this.message,
-      latitude: this.latitude,
-      longitude: this.longitude,
-      userEntityId: 3
-    }
-    console.log("hello");
+
+    
     this.markerService.createPost(this.form.value).pipe(
       map(post => console.log("success"))
     ).subscribe( () => {
-      console.log("look in db");
+      console.log("Message added to database");
     })
   }
 

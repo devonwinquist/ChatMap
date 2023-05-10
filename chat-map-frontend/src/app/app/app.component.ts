@@ -6,10 +6,10 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { MarkerComponent } from '../marker/component/marker.component';
 
 export interface Marker {
+  title: string;
+  content: string;
   lat: number;
   lng: number;
-  title: string;
-  message: string;
   createdBy: string;
 }
 
@@ -28,28 +28,29 @@ export class AppComponent {
   public isShowingLogin: boolean;
   public isShowingLogout: boolean;
 
-  markers: Marker[] =[
-    {
-      lat: 51.678418,
-      lng: 7.809007,
-      title: 'Test title',
-      message: 'this is a test message',
-      createdBy: 'test user'
-    }
-  ]
+  // markers: Marker[] =[
+  //   {
+  //     lat: 51.678418,
+  //     lng: 7.809007,
+  //     title: 'Test title',
+  //     message: 'this is a test message',
+  //     createdBy: 'test user'
+  //   }
+  // ]
+  markers: Marker[];
   
 
   constructor(private _snackBar: MatSnackBar, public loginService: LoginService, private _dialog: MatDialog, public markerService: MarkerService) {
 
   }
 
-  addMarker(lat: number, lng: number, title: string, message: string, createdBy: string) {
+  addMarker(title: string, content: string, lat: number, lng: number) {
     if(this.loginService.isAuthenticated) {
       const newMarker: Marker = {
+        title,
+        content,
         lat,
         lng,
-        title,
-        message,
         createdBy: this.username
       };
       this.markers.push(newMarker);
@@ -84,9 +85,8 @@ export class AppComponent {
     };
     const dialogRef = this._dialog.open(MarkerComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
-      data=>this.addMarker(data.latitude, data.longitude, data.title, data.message, data.createdBy),
+      data=>this.addMarker(data.title, data.content, data.latitude, data.longitude)
     );
-    console.log(this.markers);
   }
   
 
