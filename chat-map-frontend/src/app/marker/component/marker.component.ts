@@ -47,6 +47,22 @@ export class MarkerComponent implements OnInit{
     }
   }
 
+    getCoordinates() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          this.latitude = position.coords.latitude;
+          this.longitude = position.coords.longitude;
+        },
+        (error) => {
+          console.log('Error getting coordinates:', error);
+        }
+      );
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
+  }
+
   close() {
     this.dialogRef.close();
   }
