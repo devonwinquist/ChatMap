@@ -2,10 +2,9 @@
     height: 100%;
     width: 100%;
     margin: 0;
-    
 }
 agm-map {
-    /* height: 550px; */
+    height: 550px;
     height: 750px;
 }
 .testButton {
@@ -21,7 +20,6 @@ agm-map {
     background: #21586d;
     color: #fff;
     min-height:100px;
-    
 }
 .header-button {
     background-color: #21586d;
@@ -43,4 +41,8 @@ agm-map {
 .submitLogin {
     margin-bottom:20px;
     margin-left:20px;
+}
+.logo {
+    height: 70px;
+    margin-top: 25px;
 }

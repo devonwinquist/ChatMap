@@ -26,6 +26,7 @@ export class MarkerComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.getCoordinates();
     this.form=this.fb.group({
       title: [this.title,[]],
       content: [this.content,[]],
@@ -44,6 +45,22 @@ export class MarkerComponent implements OnInit{
         console.log("Message added to database");
         window.location.reload();
       })
+    }
+  }
+
+    getCoordinates() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          this.latitude = position.coords.latitude;
+          this.longitude = position.coords.longitude;
+        },
+        (error) => {
+          console.log('Error getting coordinates:', error);
+        }
+      );
+    } else {
+      console.log('Geolocation is not supported by this browser.');
     }
   }
 

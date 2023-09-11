@@ -28,8 +28,14 @@
                 <mat-hint *ngIf="registerForm.get('passwordConfirm')?.errors">Password Confirmation is Required</mat-hint>
             </mat-form-field>
 
-            <button mat-flat-button color="primary" [disabled]="registerForm.invalid" type="submit">Register</button>
-
-        </div>
+            <mat-checkbox formControlName="termsAndConditions" (change)="updateRegisterButtonState()">
+                I agree to the terms and conditions
+              </mat-checkbox>
+              <mat-error *ngIf="isTermsAndConditionsInvalid()">
+                You must agree to the terms and conditions
+              </mat-error>
+        
+              <button mat-flat-button color="primary" [disabled]="registerButtonDisabled" type="submit">Register</button>
+            </div>
     </form>
 </div>
