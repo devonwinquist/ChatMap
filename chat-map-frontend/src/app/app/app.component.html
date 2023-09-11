@@ -2,7 +2,7 @@
   <div class="header">
     <mat-toolbar color="primary">
       <mat-toolbar-row>
-        <h1>ChatMap</h1>
+        <img class="logo" src="../../assets/ChatMap.png" alt="logo">
         <span class="example-spacer"></span>
         <h1 *ngIf="loginService.isAuthenticated">Welcome back</h1>
         <h1 *ngIf="loginService.isAuthenticated">{{name}}</h1>
@@ -16,10 +16,11 @@
             <mat-icon>login</mat-icon>
             <span>Login</span>
           </button>
-          <button mat-menu-item *ngIf="loginService.isAuthenticated==true">
+          <button mat-menu-item *ngIf="loginService.isAuthenticated==true" (click)="logout()">
             <mat-icon>logout</mat-icon>
             <span>Logout</span>
           </button>
+          
           <button mat-menu-item *ngIf="loginService.isAuthenticated==false" (click)="loginService.showRegister()&&loginService.isShowingLogin=false">
             <mat-icon>person_add</mat-icon>
             <span>Create Account</span>

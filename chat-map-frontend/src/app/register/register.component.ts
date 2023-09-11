@@ -11,8 +11,8 @@ import { map } from 'rxjs';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-
-  public isAuthenticated: boolean = false;
+  registerButtonDisabled: boolean = true;
+  isAuthenticated: boolean = false;
 
   constructor(
     private loginService: LoginService,
@@ -20,36 +20,47 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-      this.registerForm = this.formBuilder.group({
-        name: [null, [Validators.required]],
-        username: [null, [Validators.required]],
-        email: [null, [
-          Validators.required,
-          Validators.email,
-          Validators.minLength(6)
-        ]],
-        password: [null, [
-          Validators.required,
-          Validators.minLength(3)
-          //CustomValidators.passwordContainsNumber
-        ]],
-        passwordConfirm: [null, [Validators.required]]
-      }), {
-        // Validators: CustomerValidators.passwordMatches
-      }
+    this.registerForm = this.formBuilder.group({
+      name: [null, [Validators.required]],
+      username: [null, [Validators.required]],
+      email: [null, [
+        Validators.required,
+        Validators.email,
+        Validators.minLength(6)
+      ]],
+      password: [null, [
+        Validators.required,
+        Validators.minLength(3)
+      ]],
+      passwordConfirm: [null, [Validators.required]],
+      termsAndConditions: [false, Validators.requiredTrue]
+    });
+    
+    this.registerForm.valueChanges.subscribe(() => {
+      this.updateRegisterButtonState();
+    });
+ 
   }
 
+  updateRegisterButtonState() {
+  this.registerButtonDisabled = this.registerForm.invalid || !this.registerForm.value.termsAndConditions;
+  }
+  isTermsAndConditionsInvalid() {
+    const termsAndConditionsControl = this.registerForm.get('termsAndConditions');
+    return termsAndConditionsControl?.invalid && termsAndConditionsControl?.touched;
+  }
+  
+  
+  
   submitUser() {
-    console.log("hello");
-    if(this.registerForm.invalid) {
+    if (this.registerForm.invalid || !this.registerForm.value.termsAndConditions) {
       return;
     }
     console.log(this.registerForm.value);
     this.loginService.register(this.registerForm.value).pipe(
-      map(user => this.isAuthenticated=true)
+      map(user => this.isAuthenticated = true)
     ).subscribe(() => {
       this.loginService.hideRegister();
-    })
+    });
   }
-
-}
+  }
