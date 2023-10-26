@@ -100,7 +100,7 @@ export class AppComponent implements OnInit {
   showAllPosts() {
     this.markerService.getAllPosts().subscribe({
       next: markers => {
-        console.log(markers);
+        //console.log(markers);
         this.markerArray = markers;
       }
     })
