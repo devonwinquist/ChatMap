@@ -10,7 +10,7 @@ export interface Marker {
   content: string;
   lat: number;
   lng: number;
-  createdBy: string;
+  userId: any;
 }
 
 @Component({
@@ -27,29 +27,30 @@ export class AppComponent implements OnInit {
   public username = "";
   public isShowingLogin: boolean;
   public isShowingLogout: boolean;
-  markers: Marker[];
+  public markers: Marker[];
   
-
+  
   constructor(private _snackBar: MatSnackBar, public loginService: LoginService, private _dialog: MatDialog, public markerService: MarkerService) {
-
+    
   }
-
+  
   ngOnInit(): void {
     this.showAllPosts();
+    this.markers = [];
   }
 
   ngOnChanges(): void {
     this.showAllPosts();
   }
 
-  addMarker(title: string, content: string, lat: number, lng: number) {
+  addMarker(title: string, content: string, lat: number, lng: number, userId: any) {
     if(this.loginService.isAuthenticated) {
       const newMarker: Marker = {
         title,
         content,
         lat,
         lng,
-        createdBy: this.username
+        userId
       };
       this._snackBar.open('Message added successfully!', 'Dismiss', {
         duration: 5000
@@ -65,7 +66,7 @@ export class AppComponent implements OnInit {
   }
 
   deleteMarker(index: number) {
-    if(this.loginService.isAuthenticated && this.markers[index].createdBy === this.username) {
+    if(this.loginService.isAuthenticated) {
       this.markers.splice(index, 1);
       this._snackBar.open('Message deleted successfully!', 'Dismiss', {
         duration: 5000
@@ -86,7 +87,7 @@ export class AppComponent implements OnInit {
     };
     const dialogRef = this._dialog.open(MarkerComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
-      data=>this.addMarker(data.title, data.content, data.latitude, data.longitude)
+      data=>this.addMarker(data.title, data.content, data.latitude, data.longitude, data.userId)
     );
   }
 
@@ -101,7 +102,7 @@ export class AppComponent implements OnInit {
   showAllPosts() {
     this.markerService.getAllPosts().subscribe({
       next: markers => {
-        console.log(markers);
+        //console.log(markers);
         this.markerArray = markers;
       }
     })

@@ -23,8 +23,6 @@ export class LoginComponent implements OnInit {
     constructor(public loginService:LoginService, private cdr: ChangeDetectorRef,
       private formBuilder: FormBuilder){}
 
-    
-
     ngOnInit(): void {
       this.loginForm = new FormGroup({
         email: new FormControl(null, [
@@ -44,7 +42,7 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-      console.log("test");
+      this.loginService.setEmail(this.loginForm.get('email')?.value);
       if(this.loginForm.invalid) {
         return;
       }
@@ -54,5 +52,4 @@ export class LoginComponent implements OnInit {
         this.loginService.hideLogin();
       })
     }
-    
 }
