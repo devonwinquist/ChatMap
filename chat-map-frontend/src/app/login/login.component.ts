@@ -3,8 +3,6 @@ import { Observable, map } from 'rxjs';
 import { LoginService } from '../../services/login.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
-
-
 @Component({
     selector: 'log-in-page',
     templateUrl: './login.component.html',

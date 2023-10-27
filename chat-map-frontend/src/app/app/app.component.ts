@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
   public isShowingLogout: boolean;
   markers: Marker[];
   
-
   constructor(private _snackBar: MatSnackBar, public loginService: LoginService, private _dialog: MatDialog, public markerService: MarkerService) {
 
   }

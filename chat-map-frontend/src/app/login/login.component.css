@@ -5,6 +5,7 @@
     justify-content: left;
     color: white;
     background-color: cadetblue;
+    overflow-y: auto;
 }
 
 mat-form-field{
