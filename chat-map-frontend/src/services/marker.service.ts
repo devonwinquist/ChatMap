@@ -29,14 +29,14 @@ export class MarkerService {
 
   createPost(post: Post) {
     post.userId = this.getUserId();
-    return this.httpClient.post<any>("http://localhost:3000/post/", post).pipe(
+    return this.httpClient.post<any>("http://localhost:3000/report/", post).pipe(
       tap(post => console.log(post)),
       map(post => post)
     )
   }
 
   getAllPosts(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>("http://localhost:3000/post/").pipe(
+    return this.httpClient.get<Post[]>("http://localhost:3000/report/").pipe(
       tap(data => console.log('All: ' + JSON.stringify(data)))
     );
   }
