@@ -92,7 +92,9 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    location.reload();
+    if(this.loginService.isAuthenticated) {
+      this.loginService.logout();
+    }
   }
   
   markerArray: any[];

@@ -4,7 +4,8 @@
     margin: 0;
 }
 agm-map {
-    height: 550px;
+    height: 550px;  /*fit*/
+
     height: 750px;
 }
 .testButton {
