@@ -22,6 +22,7 @@ export class LoginService {
 
   protected username: string;
   protected password: string;
+  protected authToken: any;
   public isAuthenticated: boolean;
 
   public isShowingLogin: boolean;
@@ -62,6 +63,7 @@ export class LoginService {
         console.log(token);
         localStorage.setItem('token', token.access_token);
         if(token) {
+          this.authToken = token;
           this.isAuthenticated=true;
         }
         return token;
@@ -69,6 +71,12 @@ export class LoginService {
     );
   }
 
+  logout(){
+    if(this.authToken){
+      localStorage.removeItem(this.authToken);
+      this.isAuthenticated = false;
+    }
+  }
 
   register(user: User) {
     return this.httpClient.post<any>('http://localhost:3000/users/', user).pipe(
