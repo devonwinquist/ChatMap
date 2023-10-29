@@ -1,0 +1,61 @@
+<div class="home-page">
+  <div class="header">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <img class="logo" [src]="ImagePath" (click)="window.location.reload()" alt="logo">
+        <span class="example-spacer"></span>
+        <h1 *ngIf="loginService.isAuthenticated">Welcome back</h1>
+        <h1 *ngIf="loginService.isAuthenticated">{{name}}</h1>
+        <span class="example-spacer"></span>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="header-button" aria-label="my icon">
+          <mat-icon>person_box</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngIf="loginService.isAuthenticated==false" (click)="loginService.showLogin();loginService.isShowingRegister=false;">
+            <mat-icon>login</mat-icon>
+            <span>Login</span>
+          </button>
+          <button mat-menu-item *ngIf="loginService.isAuthenticated==true" (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+          <button mat-menu-item *ngIf="loginService.isAuthenticated==false" (click)="loginService.showRegister();loginService.isShowingLogin=false;">
+            <mat-icon>person_add</mat-icon>
+            <span>Create Account</span>
+          </button>
+        </mat-menu>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+  </div>
+
+  <log-in-page [hidden]="loginService.isShowingLogin==false"></log-in-page>
+  <app-register [hidden]="loginService.isShowingRegister==false"></app-register>
+
+
+  <div class="map">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [disableDefaultUI] = "true" (mapClick)="onMapClick($event)">
+      <agm-marker *ngFor="let report of reportArray" [latitude]="report.latitude" [longitude]="report.longitude" [label]="r" [markerDraggable]="true" (dragEnd)="markerDragEnd(m, $event)">
+        <agm-info-window>
+          <p>{{report.createdBy}}</p>
+          <p>{{report.title}}</p>
+          <p>{{report.content}}</p>
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+
+  <div class="controls-toolbar">
+    <mat-toolbar color="secondary">
+      <mat-toolbar-row>
+        <span class="example-spacer"></span>
+        <button mat-button (click)="onMapClick($event)">
+          <mat-icon>post_add</mat-icon>
+          <span>Submit a new Report</span>
+        </button>
+        <span class="example-spacer"></span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+</div>

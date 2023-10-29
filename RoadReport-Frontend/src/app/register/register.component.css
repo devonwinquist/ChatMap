@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    color: white;
+    background-color:#483d3f;
+}
+
+form{
+    overflow-y: scroll;
+    height: 80vh;
+    color:white;
+}
+
+.container > * {
+    width: 40%;
+    margin: 15px;
+}
+
+mat-error {
+    color:white;
+}
+
+.termsAndConditions{
+    color: #000;
+}

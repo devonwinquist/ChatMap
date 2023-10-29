@@ -1,0 +1,118 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map, tap } from 'rxjs';
+import { ReportService } from './report.service';
+
+export interface LoginForm {
+  email: string;
+  password: string;
+}
+
+export interface User {
+  name?: string;
+  username?: string;
+  email?: string;
+  password?: string;
+  passwordConfirm?: string;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LoginService {
+
+  protected username: string;
+  protected password: string;
+
+  protected email: string;
+  public userId: any;
+  protected authToken: any;
+  public isAuthenticated: boolean;
+
+  public isShowingLogin: boolean;
+  public isShowingLogout: boolean;
+  public isShowingRegister: boolean;
+
+  constructor(private httpClient:HttpClient, private reportService : ReportService) {
+    this.isAuthenticated = false;
+    this.isShowingLogin = false;
+    this.isShowingLogout = false;
+    this.isShowingRegister = false;
+  }
+
+  public showRegister(): void {
+    this.isShowingRegister = true;
+  }
+  
+  public hideRegister(): void {
+    this.isShowingRegister = false;
+  }
+
+  public showLogin(): void {
+    this.isShowingLogin = true;
+  }
+
+  public hideLogin(): void {
+    this.isShowingLogin = false;
+  }
+
+  public getUsername(): string {
+    return this.username;
+  }
+
+  public setUsername(username: string): void {
+    this.username = username;
+  }
+
+  public getEmail(): string {
+    return this.email;
+  }
+
+  public setEmail(email: string): void {
+    this.email = email;
+  }
+
+  public getUserId(): any {
+    return this.userId;
+  }
+
+  public setUserId(userId: any): void {
+    this.userId = userId;
+  }
+
+  login(loginForm: LoginForm) {
+    return this.httpClient.post<any>('http://localhost:3000/users/login', {email: loginForm.email, password: loginForm.password}).pipe(
+      map((token) => {
+        console.log(token);
+        localStorage.setItem('token', token.access_token);
+        if(token) {
+          this.authToken = token;
+          this.isAuthenticated=true;
+        }
+        return token;
+      })
+    );
+  }
+
+  logout(){
+    if(this.authToken){
+      localStorage.removeItem(this.authToken);
+      this.isAuthenticated = false;
+    }
+  }
+
+  register(user: User) {
+    return this.httpClient.post<any>('http://localhost:3000/users/', user).pipe(
+      tap(user => console.log(user)),
+      map(user => user)
+    )
+  }
+
+  getCurrentUser(email: string) {
+    return this.httpClient.post<any>('http://localhost:3000/users/getUserByEmail', {email: email}).subscribe(data => {
+      this.setUserId(data[0].id);
+      this.reportService.setUserId(this.getUserId());
+      return data;
+    })
+  }
+}
