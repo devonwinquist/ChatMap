@@ -5,9 +5,24 @@
     justify-content: center;
     overflow: auto;
     color: white;
+    background-color: cadetblue;
+}
+
+form{
+    overflow-y: scroll;
+    height: 80vh;
+    color:white;
 }
 
 .container > * {
     width: 40%;
     margin: 9px;
+}
+
+mat-error {
+    color:white;
+}
+
+.termsAndConditions{
+    color: white;
 }

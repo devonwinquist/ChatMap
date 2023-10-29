@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   isAuthenticated: boolean = false;
 
   constructor(
-    private loginService: LoginService,
+    public loginService: LoginService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -49,8 +49,6 @@ export class RegisterComponent implements OnInit {
     const termsAndConditionsControl = this.registerForm.get('termsAndConditions');
     return termsAndConditionsControl?.invalid && termsAndConditionsControl?.touched;
   }
-  
-  
   
   submitUser() {
     if (this.registerForm.invalid || !this.registerForm.value.termsAndConditions) {

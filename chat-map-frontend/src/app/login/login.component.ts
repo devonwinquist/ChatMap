@@ -3,12 +3,10 @@ import { Observable, map } from 'rxjs';
 import { LoginService } from '../../services/login.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
-
-
 @Component({
     selector: 'log-in-page',
     templateUrl: './login.component.html',
-    styleUrls: ['../app/app.component.css']
+    styleUrls: ['../login/login.component.css']
 })
 
 export class LoginComponent implements OnInit {
