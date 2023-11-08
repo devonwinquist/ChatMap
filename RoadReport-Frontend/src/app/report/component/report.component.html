@@ -1,7 +1,5 @@
 <h2 mat-dialog-title>Report Details</h2>
-
 <mat-dialog-content [formGroup]="form">
-  
     <div>
         <mat-form-field>
             <input matInput
@@ -35,10 +33,9 @@
                     [(ngModel)]="longitude">
         </mat-form-field>
     </div>
- 
 </mat-dialog-content>
-
 <mat-dialog-actions>
     <button mat-button class="mat-raised-button"(click)="close()">Close</button>
     <button mat-button class="mat-raised-button mat-primary"(click)="submitReport()">Submit</button>
 </mat-dialog-actions>
+

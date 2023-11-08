@@ -7,7 +7,6 @@
         <h1 *ngIf="loginService.isAuthenticated">Welcome back</h1>
         <h1 *ngIf="loginService.isAuthenticated">{{name}}</h1>
         <span class="example-spacer"></span>
-
         <button mat-icon-button [matMenuTriggerFor]="menu" class="header-button" aria-label="my icon">
           <mat-icon>person_box</mat-icon>
         </button>
@@ -26,13 +25,11 @@
           </button>
         </mat-menu>
       </mat-toolbar-row>
-
     </mat-toolbar>
   </div>
 
   <log-in-page [hidden]="loginService.isShowingLogin==false"></log-in-page>
   <app-register [hidden]="loginService.isShowingRegister==false"></app-register>
-
 
   <div class="map">
     <agm-map [latitude]="latitude" [longitude]="longitude" [disableDefaultUI] = "true" (mapClick)="onMapClick($event)">

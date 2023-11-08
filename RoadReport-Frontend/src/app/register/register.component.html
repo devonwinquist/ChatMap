@@ -1,42 +1,33 @@
 <div class="register">
-
     <form [formGroup]="registerForm" (ngSubmit)="submitUser()">
         <div class="container">
-
             <mat-form-field>
                 <input matInput placeholder="Full Name" formControlName="name">
                 <mat-hint *ngIf="registerForm.get('name')?.errors">Full Name is required</mat-hint>
             </mat-form-field>
-
             <mat-form-field>
                 <input matInput placeholder="Your Username" formControlName="username">
                 <mat-hint *ngIf="registerForm.get('username')?.errors">Username is required</mat-hint>
             </mat-form-field>
-
             <mat-form-field>
                 <input matInput placeholder="Your Email" formControlName="email">
                 <mat-hint *ngIf="registerForm.get('email')?.errors">Email is required</mat-hint>
             </mat-form-field>
-
             <mat-form-field>
                 <input matInput type="password" placeholder="Password" formControlName="password">
                 <mat-hint *ngIf="registerForm.get('password')?.errors">Password is required</mat-hint>
             </mat-form-field>
-
             <mat-form-field>
                 <input matInput type="password" placeholder="Confirm your password" formControlName="passwordConfirm">
                 <mat-hint *ngIf="registerForm.get('passwordConfirm')?.errors">Password Confirmation is Required</mat-hint>
             </mat-form-field>
-
             <mat-checkbox class="termsAndConditions" formControlName="termsAndConditions" (change)="updateRegisterButtonState()">I agree to the terms and conditions</mat-checkbox>
-            
               <mat-error *ngIf="isTermsAndConditionsInvalid()">
                 You must agree to the terms and conditions
               </mat-error>
-        
               <button mat-flat-button color="primary" [disabled]="registerButtonDisabled" type="submit">Register</button>
-
               <button mat-flat-button color="warn" (click)="this.loginService.hideRegister()">Collapse Menu</button>
             </div>
     </form>
 </div>
+

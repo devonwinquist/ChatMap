@@ -80,7 +80,6 @@ export class AppComponent implements OnInit {
   }
 
   onMapClick($event: google.maps.MouseEvent) {
-    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       id: 2,

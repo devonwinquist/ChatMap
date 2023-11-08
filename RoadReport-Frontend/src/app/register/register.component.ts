@@ -14,10 +14,7 @@ export class RegisterComponent implements OnInit {
   registerButtonDisabled: boolean = true;
   isAuthenticated: boolean = false;
 
-  constructor(
-    public loginService: LoginService,
-    private formBuilder: FormBuilder
-  ) {}
+  constructor(public loginService: LoginService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -35,11 +32,9 @@ export class RegisterComponent implements OnInit {
       passwordConfirm: [null, [Validators.required]],
       termsAndConditions: [false, Validators.requiredTrue]
     });
-    
     this.registerForm.valueChanges.subscribe(() => {
       this.updateRegisterButtonState();
     });
- 
   }
 
   updateRegisterButtonState() {
