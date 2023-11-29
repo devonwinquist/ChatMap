@@ -1,9 +1,8 @@
 <h2 mat-dialog-title>Report Details</h2>
-<mat-dialog-content [formGroup]="form">
-    <div>
+<mat-dialog-content [formGroup]="form" (drop)="onFileDropped($event)" (dragover)="onDragOver($event)">    <div>
         <mat-form-field>
             <input matInput
-                    placeholder="Enter Title"
+                    placeholder="Enter Subject"
                     formControlName="title"
                     [(ngModel)]="title">
         </mat-form-field>
@@ -11,7 +10,7 @@
     <div>
         <mat-form-field>
             <input matInput
-                    placeholder="Enter Message"
+                    placeholder="Enter Description"
                    formControlName="content"
                    [(ngModel)]="content">
         </mat-form-field>
@@ -19,7 +18,7 @@
     <div>
         <mat-form-field>
             <input matInput
-                    placeholder="Enter Latitude"
+                    placeholder="Latitude"
                     formControlName="latitude"
                     [(ngModel)]="latitude"
                     >
@@ -33,9 +32,32 @@
                     [(ngModel)]="longitude">
         </mat-form-field>
     </div>
+    <div>
+        <label for="fileInput" class="file-input-label">Add an Image: </label>
+        <input
+          type="file"
+          id="fileInput"
+          #fileInput
+          (change)="onFileSelected($event)"
+          (drop)="onFileDropped($event)"
+          (dragover)="onDragOver($event)"
+          accept="image/*"
+        />
+      </div>
+      <div class="drop-area" (drop)="onFileDropped($event)" (dragover)="onDragOver($event)">
+        <div *ngIf="!selectedImage">
+          <p>Drag and drop an image here</p>
+        </div>
+        <div *ngIf="selectedImage">
+          <img [src]="previewUrl" alt="Uploaded Image" />
+          <p>{{ selectedImage.name }}</p>
+        </div>
+      </div>
+
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button class="mat-raised-button"(click)="close()">Close</button>
     <button mat-button class="mat-raised-button mat-primary"(click)="submitReport()">Submit</button>
+    <h4></h4>
+    <button mat-button class="mat-raised-button"(click)="close()">Close</button>
 </mat-dialog-actions>
 

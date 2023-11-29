@@ -1,29 +1,62 @@
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: auto;
+    gap: 10px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 80vh;
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.file-input-label {
+    margin-bottom: 5px;
+    cursor: pointer;
+    display: inline-block;
+    background: #DC143C;
     color: white;
-    background-color:#483d3f;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
-form{
-    overflow-y: scroll;
-    height: 80vh;
-    color:white;
+input.mat-input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
 }
 
-.container > * {
-    width: 40%;
-    margin: 15px;
+input[type="file"] {
+    display: none;
 }
 
-mat-error {
-    color:white;
+.file-input-label::after {
+    content: 'Choose File';
+    display: inline-block;
+    background: #FF6347;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.termsAndConditions{
-    color: #000;
+.mat-raised-button {
+    margin-right: 10px;
+    background-color: #DC143C;
+    color: white;
 }
 
+.mat-raised-button:hover {
+    background-color: #FF6347;
+}

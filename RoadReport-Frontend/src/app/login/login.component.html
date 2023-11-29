@@ -10,7 +10,8 @@
                 <mat-hint *ngIf="loginForm.controls.password.errors">Password is required</mat-hint>
             </mat-form-field>
             <button mat-flat-button color="primary" [disabled]="!loginForm.valid" type="submit">Login</button>
-            <button mat-flat-button color="warn" (click)="loginService.hideLogin()">Collapse Menu</button>
+            <h1></h1>
+            <button mat-flat-button color="warn" (click)="loginService.hideLogin()">Close</button>
         </div>
     </form>
 </div>
